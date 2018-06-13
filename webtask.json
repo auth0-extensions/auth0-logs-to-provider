@@ -7,7 +7,7 @@
   "type": "cron",
   "category": "log_export",
   "initialUrlPath": "/login",
-  "logoUrl": "",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-azure-blob-storage/assets/logo.svg",
   "repository": "https://github.com/auth0-extensions/auth0-logs-to-provider",
   "keywords": [
     "auth0",
