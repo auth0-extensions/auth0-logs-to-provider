@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/auth0-extensions/auth0-logs-to-provider.git"
   },
-  "author": "pushp.abrol@auth0.com",
+  "author": "auth0",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/auth0-extensions/auth0-logs-to-provider.git/issues"

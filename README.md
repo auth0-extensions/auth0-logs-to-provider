@@ -1,8 +1,8 @@
-# Auth0 - Logs to AWS Cloudwatch Logs
+# Auth0 - Logs to Any Provider
 
 ## Install Extension
 
-This extension will take all of your Auth0 logs and export them to CloudWatch. to install go to your management dashboard - https://manage.auth0.com/#/extensions and click on Create Extension and enter the url for this github repo.
+This extension will take all of your Auth0 logs and export them to any provider from the list. To install go to your management dashboard - https://manage.auth0.com/#/extensions and click on Create Extension and enter the url for this github repo.
 
 
 ## Deploy to Webtask.io
@@ -22,19 +22,19 @@ wt init
 ### Pre reqs:
 
 > To get a client_id and secret use the client credentials setup and grant a client "read:logs" scope on API V2 and you can use that Client Id/Secret for AUTH0_CLIENT_ID && AUTH0_CLIENT_SECRET in the script below.
-> You will need to create a cloud watch log group and log group stream and use the values for CLOUDWATCH_LOG_GROUP_NAME and CLOUDWATCH_LOG_STREAM_NAME
-> Get the AWS Access, Secret Key and Region for AWS_ACCESS_KEY_ID, AWS_SECRET_KEY, AWS_REGION
+> You'll need to get SECRETS, based on selecter provider
 
 ### Create Cron
 
 To run it on a schedule (run every 5 minutes for example):
 
 ```bash
-wt cron schedule --profile "wt_profile" --name auth0-logs-2-cloudwatch \
+wt cron schedule --profile "wt_profile" --name auth0-logs-to-provider \
 --secret AUTH0_DOMAIN="x.au/eu.auth0.com" \
 --secret AUTH0_CLIENT_ID="client_id with read logs permissions on API V2" \
 --secret AUTH0_CLIENT_SECRET="<client_secret>" --secret LOG_LEVEL="0,1,2,3,4" \
 --secret LOG_TYPES="s,seacft,feacft,f,w,du,fu,fp,fc,fco,con,coff,fcpro,ss,fs,cs,cls,sv,fv,scp,fcp,sce,fce,scu,fcu,scpn,fcpn,svr,fvr,scpr,fcpr,fn,limit_wc,limit_ui,api_limit,sdu,fdu" \
+--secret PROVIDER="cloudwatch" \
 --secret CLOUDWATCH_LOG_GROUP_NAME="logGroupName" --secret CLOUDWATCH_LOG_STREAM_NAME="logStreamName" \
 --secret AWS_ACCESS_KEY_ID="aws_access_key" --secret AWS_SECRET_KEY="aws_secret_key" \
 --secret AWS_REGION="<aws_region>" --secret BATCH_SIZE=100 "*/5 * * * *" build/bundle.js
