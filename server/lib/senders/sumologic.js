@@ -16,7 +16,7 @@ module.exports = () => {
     try {
       request
         .post(config('SUMOLOGIC_URL'))
-        .send(logs.concat('\n'))
+        .send(logs)
         .set('Content-Type', 'application/json')
         .end(function(err, res) {
           if (err || res.statusCode < 200 || res.statusCode >= 400) {
@@ -49,8 +49,7 @@ module.exports = () => {
         timestamp: timestamp
       };
 
-      message.push(JSON.stringify(_.extend(data, log)));
-      message.push('\n');
+      message.push(_.extend(data, log));
     });
 
     return sendLogs(message, callback);
