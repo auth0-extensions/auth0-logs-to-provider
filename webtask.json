@@ -467,6 +467,10 @@
       "allowMultiple": false,
       "options": [
         {
+          "value": "",
+          "text": "Select Provider"
+        },
+        {
           "value": "appinsights",
           "text": "Application Insights"
         },
