@@ -2,7 +2,11 @@ const moment = require('moment');
 const loggingTools = require('auth0-log-extension-tools');
 
 const senders = require('./senders');
+const logger = require('./logger');
 const config = require('./config');
+
+const MS_PER_S = 1000;
+const NS_PER_MS = 1000000;
 
 module.exports = (storage) =>
   (req, res, next) => {
@@ -20,7 +24,22 @@ module.exports = (storage) =>
       throw new Error(`Unknown provider: ${provider}`);
     }
 
-    const onLogsReceived = senders[provider]();
+    const sendLogs = senders[provider]();
+
+    const onLogsReceived = (logs, callback) => {
+      const startTime = process.hrtime();
+
+      const requestFinished = (err) => {
+        const elapsedTime = process.hrtime(startTime);
+        const elapsedMillis = elapsedTime[0] * MS_PER_S + elapsedTime[1] / NS_PER_MS;
+
+        logger.info(`Finished request to '${url}' in ${elapsedMillis}ms.`);
+
+        callback(err);
+      };
+
+      sendLogs(logs, requestFinished);
+    };
 
     const slack = new loggingTools.reporters.SlackReporter({
       hook: config('SLACK_INCOMING_WEBHOOK_URL'),
@@ -35,7 +54,8 @@ module.exports = (storage) =>
       batchSize: parseInt(config('BATCH_SIZE')),
       startFrom: config('START_FROM'),
       logTypes: config('LOG_TYPES'),
-      logLevel: config('LOG_LEVEL')
+      logLevel: config('LOG_LEVEL'),
+      logger
     };
 
     const maxBatchSize = (provider === 'mixpanel') ? 20 : 100;
