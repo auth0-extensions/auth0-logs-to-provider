@@ -20,7 +20,7 @@ module.exports = (storage) => {
   app.get('/api/report', authenticateAdmins, (req, res, next) =>
     storage.read()
       .then((data) => {
-        const allLogs = (data && data.logs) ? _.sortByOrder(data.logs, 'start', 'desc') : [];
+        const allLogs = (data && data.logs) ? _.orderBy(data.logs, 'start', 'desc') : [];
         const logs = (req.query.filter && req.query.filter === 'errors') ? _.filter(allLogs, log => !!log.error) : allLogs;
         const page = (req.query.page && parseInt(req.query.page)) ? parseInt(req.query.page) - 1 : 0;
         const perPage = (req.query.per_page && parseInt(req.query.per_page)) || 10;
