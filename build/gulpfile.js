@@ -23,6 +23,7 @@ gulp.task('run', () => {
         PUBLIC_WT_URL: url
       },
       ignore: [
+        path.join(__dirname, '../dist/'),
         path.join(__dirname, '../assets/app/'),
         path.join(__dirname, '../server/data.json'),
         path.join(__dirname, '../server/config.json'),

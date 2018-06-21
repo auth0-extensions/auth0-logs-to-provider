@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import connectContainer from 'redux-static';
+import moment from 'moment';
 import { Error, LoadingPanel, Pagination, TableTotals } from 'auth0-extension-ui';
 
 import { logActions } from '../actions';
@@ -44,7 +45,8 @@ export default connectContainer(class extends Component {
   };
 
   render() {
-    const { error, records, total, loading, activeRecord } = this.props.logs.toJS();
+    const { error, records, total, loading, activeRecord, lastRun } = this.props.logs.toJS();
+    const lastRunString = moment(lastRun).format('lll');
 
     return (
       <div>
@@ -59,11 +61,18 @@ export default connectContainer(class extends Component {
               </li>
             </ul>
           </div>
-          <ButtonToolbar className="pull-right">
-            <Button bsSize="small" className="btn-default" onClick={this.handleReload}>
-              <i className="icon icon-budicon-257" /> Reload
-            </Button>
-          </ButtonToolbar>
+          <div className="col-xs-6">
+            <div className="col-xs-7">
+              {'Last Run: ' + lastRunString }
+            </div>
+            <ButtonToolbar className="pull-right">
+              <div className="col-xs-6">
+                <Button bsSize="small" className="btn-default" onClick={this.handleReload}>
+                  <i className="icon icon-budicon-257" /> Reload
+                </Button>
+              </div>
+            </ButtonToolbar>
+          </div>
         </div>
         <LoadingPanel show={loading} animationStyle={{ paddingTop: '5px', paddingBottom: '5px' }}>
           <div className="row">

@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   records: [],
   total: 0,
+  lastRun: null,
   activeRecord: null
 };
 
@@ -36,7 +37,8 @@ export const logs = createReducer(fromJS(initialState), { // eslint-disable-line
       loading: false,
       records: fromJS(data.logs),
       nextPage: action.meta.page + 1,
-      total: data.total
+      total: data.total,
+      lastRun: data.lastRun || null
     });
   }
 });

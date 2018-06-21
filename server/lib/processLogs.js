@@ -18,6 +18,13 @@ module.exports = (storage) =>
       return next();
     }
 
+    const updateLastRun = () =>
+      storage.read()
+        .then(data => {
+          data.lastRun = new Date();
+          return storage.write(data);
+        });
+
     const provider = config('PROVIDER');
 
     if (!provider || !senders[provider]) {
@@ -33,7 +40,7 @@ module.exports = (storage) =>
         const elapsedTime = process.hrtime(startTime);
         const elapsedMillis = elapsedTime[0] * MS_PER_S + elapsedTime[1] / NS_PER_MS;
 
-        logger.info(`Finished request to '${url}' in ${elapsedMillis}ms.`);
+        logger.info(`Finished request to '${provider}' in ${elapsedMillis}ms.`);
 
         callback(err);
       };
@@ -96,20 +103,21 @@ module.exports = (storage) =>
         })
     };
 
-    return auth0logger
-      .run(onLogsReceived)
-      .then(result => {
-        if (result && result.status && result.status.error) {
-          slack.send(result.status, result.checkpoint);
-        } else if (config('SLACK_SEND_SUCCESS') === true || config('SLACK_SEND_SUCCESS') === 'true') {
-          slack.send(result.status, result.checkpoint);
-        }
-        checkReportTime();
-        res.json(result);
-      })
-      .catch(err => {
-        slack.send({ error: err, logsProcessed: 0 }, null);
-        checkReportTime();
-        next(err);
-      });
+    return updateLastRun()
+      .then(() => auth0logger
+        .run(onLogsReceived)
+        .then(result => {
+          if (result && result.status && result.status.error) {
+            slack.send(result.status, result.checkpoint);
+          } else if (config('SLACK_SEND_SUCCESS') === true || config('SLACK_SEND_SUCCESS') === 'true') {
+            slack.send(result.status, result.checkpoint);
+          }
+          checkReportTime();
+          res.json(result);
+        })
+        .catch(err => {
+          slack.send({ error: err, logsProcessed: 0 }, null);
+          checkReportTime();
+          next(err);
+        }));
   };
