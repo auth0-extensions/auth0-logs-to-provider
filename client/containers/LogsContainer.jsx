@@ -46,7 +46,7 @@ export default connectContainer(class extends Component {
 
   render() {
     const { error, records, total, loading, activeRecord, lastRun } = this.props.logs.toJS();
-    const lastRunString = moment(lastRun).format('lll');
+    const lastRunString = lastRun ? `Last Run: ${moment(lastRun).format('lll')}` : '';
 
     return (
       <div>
@@ -62,9 +62,7 @@ export default connectContainer(class extends Component {
             </ul>
           </div>
           <div className="col-xs-6">
-            <div className="col-xs-7">
-              {'Last Run: ' + lastRunString }
-            </div>
+            <div className="col-xs-7">{lastRunString}</div>
             <ButtonToolbar className="pull-right">
               <div className="col-xs-6">
                 <Button bsSize="small" className="btn-default" onClick={this.handleReload}>
