@@ -76,6 +76,7 @@ module.exports = () => {
 
       if (!err && manifest) {
         locals.assets = JSON.parse(manifest);
+        locals.assets.app = '/app/' + locals.assets.app;
         locals.assets.customCss = config('CUSTOM_CSS');
       }
 
