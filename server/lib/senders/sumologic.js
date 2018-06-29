@@ -16,7 +16,7 @@ module.exports = () => {
     try {
       request
         .post(config('SUMOLOGIC_URL'))
-        .send(logs)
+        .send(logs.map(log => JSON.stringify(log)).join('\n'))
         .set('Content-Type', 'application/json')
         .end(function(err, res) {
           if (err || res.statusCode < 200 || res.statusCode >= 400) {
