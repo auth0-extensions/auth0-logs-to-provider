@@ -36,3 +36,4 @@ node_modules
 .idea
 server/data.json
 server/config.json
+dist

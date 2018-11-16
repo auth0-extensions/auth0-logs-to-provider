@@ -18,11 +18,12 @@
     "clean": "rimraf dist",
     "client:build": "npm run clean && cross-env NODE_ENV=production webpack --config ./build/webpack/config.prod.js --colors -p",
     "extension:build": "npm run log-types && a0-ext build:server ./webtask.js ./dist && cp ./dist/auth0-logs-to-provider.extension.$npm_package_version.js ./build/bundle.js",
+    "build:splunk": "cross-env A0EXT_PROVIDER=splunk npm run prepareWebtask && cross-env A0EXT_PROVIDER=splunk a0-ext build:server ./webtask.js ./dist",
     "lint:js": "eslint --ignore-path .gitignore --ignore-pattern build --ignore-pattern webpack .",
     "serve:dev": "cross-env NODE_ENV=development gulp run --gulpfile ./build/gulpfile.js",
     "serve:prod": "cross-env NODE_ENV=production node index.js",
     "tag": "git tag $npm_package_version && git push --tags",
-    "log-types": "node ./getLogTypes.js"
+    "prepareWebtask": "node ./buildWebtaskJson.js"
   },
   "auth0-extension": {
     "externals": [
@@ -70,7 +71,13 @@
       "auth0-log-extension-tools",
       "express-conditional-middleware",
       "pino"
-    ]
+    ],
+    "settings": {
+      "COMMON_CLIENT_VERSION": {
+        "default": "0.1.0",
+        "splunk": "05.2.1"
+      }
+    }
   },
   "dependencies": {
     "applicationinsights": "0.18.0",
@@ -135,7 +142,7 @@
     "winston-papertrail": "^1.0.2"
   },
   "devDependencies": {
-    "auth0-extensions-cli": "~1.0.9",
+    "auth0-extensions-cli": "~1.0.10",
     "autoprefixer": "^6.3.6",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.4",

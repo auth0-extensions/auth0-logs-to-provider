@@ -1,9 +1,9 @@
 const moment = require('moment');
 const loggingTools = require('auth0-log-extension-tools');
 
-const senders = require('./senders');
 const logger = require('./logger');
 const config = require('./config');
+const sendLogs = require(`./senders/${process.env.A0EXT_PROVIDER}`)();
 
 const MS_PER_S = 1000;
 const NS_PER_MS = 1000000;
@@ -25,13 +25,7 @@ module.exports = (storage) =>
           return storage.write(data);
         });
 
-    const provider = config('PROVIDER');
-
-    if (!provider || !senders[provider]) {
-      throw new Error(`Unknown provider: ${provider}`);
-    }
-
-    const sendLogs = senders[provider]();
+    const provider = process.env.A0EXT_PROVIDER;
 
     const onLogsReceived = (logs, callback) => {
       const startTime = process.hrtime();
