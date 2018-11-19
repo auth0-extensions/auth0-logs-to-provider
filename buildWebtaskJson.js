@@ -1,8 +1,16 @@
 const fs = require('fs');
 const { logTypes: getLogTypes } = require('auth0-log-extension-tools');
+const yargs = require('yargs');
+
+const argv = yargs
+  .option('provider', {
+    alias: 'p',
+    default: null
+  })
+  .argv;
 
 (function () {
-  const provider = process.env.A0EXT_PROVIDER;
+  const provider = argv.provider;
   if (!provider) {
     throw new Error('Cannot build webtask.json, provider not set.');
   }

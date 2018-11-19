@@ -54,7 +54,9 @@ module.exports = () => {
 
     // Render from CDN.
     const { A0EXT_PROVIDER, COMMON_CLIENT_VERSION } = process.env;
-    const clientVersion = COMMON_CLIENT_VERSION[A0EXT_PROVIDER] || COMMON_CLIENT_VERSION.default;
+    const clientVersion = COMMON_CLIENT_VERSION
+      ? COMMON_CLIENT_VERSION[A0EXT_PROVIDER] || COMMON_CLIENT_VERSION.default
+      : null;
     if (clientVersion) {
       return res.send(ejs.render(template, {
         config: settings,

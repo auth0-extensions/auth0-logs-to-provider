@@ -16,9 +16,8 @@
   "scripts": {
     "build": "npm run clean && npm run client:build && npm run extension:build",
     "clean": "rimraf dist",
-    "client:build": "npm run clean && cross-env NODE_ENV=production webpack --config ./build/webpack/config.prod.js --colors -p",
-    "extension:build": "npm run log-types && a0-ext build:server ./webtask.js ./dist && cp ./dist/auth0-logs-to-provider.extension.$npm_package_version.js ./build/bundle.js",
-    "build:splunk": "cross-env A0EXT_PROVIDER=splunk npm run prepareWebtask && cross-env A0EXT_PROVIDER=splunk a0-ext build:server ./webtask.js ./dist",
+    "client:build": "cross-env NODE_ENV=production webpack --config ./build/webpack/config.prod.js --colors -p",
+    "extension:build": "node build.js",
     "lint:js": "eslint --ignore-path .gitignore --ignore-pattern build --ignore-pattern webpack .",
     "serve:dev": "cross-env NODE_ENV=development gulp run --gulpfile ./build/gulpfile.js",
     "serve:prod": "cross-env NODE_ENV=production node index.js",
@@ -75,7 +74,7 @@
     "settings": {
       "COMMON_CLIENT_VERSION": {
         "default": "0.1.0",
-        "splunk": "05.2.1"
+        "splunk": "0.1.0"
       }
     }
   },
@@ -84,7 +83,7 @@
     "analytics-node": "2.0.1",
     "async": "2.1.2",
     "auth0": "^2.4.0",
-    "auth0-extension-express-tools": "1.1.7",
+    "auth0-extension-express-tools": "^1.1.9",
     "auth0-extension-tools": "1.3.1",
     "auth0-extension-ui": "^1.0.1",
     "auth0-log-extension-tools": "^1.3.6",
@@ -107,7 +106,6 @@
     "expect": "^1.20.2",
     "express": "^4.14.0",
     "express-jwt": "^3.4.0",
-    "glob": "^7.0.5",
     "immutable": "^3.8.1",
     "json-stringify-safe": "^5.0.1",
     "jsonwebtoken": "^7.1.9",
@@ -142,7 +140,7 @@
     "winston-papertrail": "^1.0.2"
   },
   "devDependencies": {
-    "auth0-extensions-cli": "~1.0.10",
+    "auth0-extensions-cli": "~1.0.11",
     "autoprefixer": "^6.3.6",
     "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.4",
@@ -161,6 +159,7 @@
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "glob": "^7.1.3",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-util": "^3.0.7",
@@ -169,6 +168,7 @@
     "mocha": "^3.1.2",
     "ngrok": "^2.2.9",
     "nodemon": "^1.9.2",
+    "npm-run": "^5.0.1",
     "nyc": "^8.3.1",
     "postcss-focus": "^1.0.0",
     "postcss-loader": "^0.13.0",
@@ -194,6 +194,7 @@
     "webpack-hot-middleware": "^2.10.0",
     "webpack-sources": "^0.1.2",
     "webpack-stats-plugin": "^0.1.1",
-    "webtask-bundle": "^2.1.1"
+    "webtask-bundle": "^2.1.1",
+    "yargs": "^12.0.4"
   }
 }
