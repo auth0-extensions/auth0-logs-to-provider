@@ -38,7 +38,7 @@ function buildProvider (providerName) {
 
   prepareDirectory(providerName);
   npmRun.sync(`rimraf dist/${providerName}`);
-  const command = `npm run prepareWebtask -- --provider=${providerName}&&` +
+  const command = `npm run prepareWebtask -- --provider=${providerName} && ` +
     `cross-env A0EXT_PROVIDER=${providerName} a0-ext build:server ./webtask.js ./dist/${providerName}`;
 
   try {
