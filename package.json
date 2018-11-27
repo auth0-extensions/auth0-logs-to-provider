@@ -70,13 +70,7 @@
       "auth0-log-extension-tools",
       "express-conditional-middleware",
       "pino"
-    ],
-    "settings": {
-      "COMMON_CLIENT_VERSION": {
-        "default": "0.1.0",
-        "splunk": "0.1.0"
-      }
-    }
+    ]
   },
   "dependencies": {
     "applicationinsights": "0.18.0",

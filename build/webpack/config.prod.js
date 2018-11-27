@@ -13,7 +13,7 @@ config.profile = false;
 
 // Build output, which includes the hash.
 config.output.hash = true;
-config.output.filename = 'auth0-logs-to-provider.ui.' + project.version + '.js';
+config.output.filename = 'auth0-logs-to-provider.ui.js';
 
 // Development modules.
 config.module.loaders.push({
@@ -27,12 +27,12 @@ config.plugins = config.plugins.concat([
   new webpack.optimize.DedupePlugin(),
 
   // Extract CSS to a different file, will require additional configuration.
-  new ExtractTextPlugin('auth0-logs-to-provider.ui.' + project.version + '.css', {
+  new ExtractTextPlugin('auth0-logs-to-provider.ui.css', {
     allChunks: true
   }),
 
   // Separate the vender in a different file.
-  new webpack.optimize.CommonsChunkPlugin('vendors', 'auth0-logs-to-provider.ui.vendors.' + project.version + '.js'),
+  new webpack.optimize.CommonsChunkPlugin('vendors', 'auth0-logs-to-provider.ui.vendors.js'),
 
   // Compress and uglify the output.
   new webpack.optimize.UglifyJsPlugin({

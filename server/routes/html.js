@@ -20,7 +20,7 @@ module.exports = () => {
     <link rel="stylesheet" type="text/css" href="https://cdn.auth0.com/manage/v0.3.1672/css/index.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.auth0.com/styleguide/4.6.13/index.min.css" />
     <% if (assets.style) { %><link rel="stylesheet" type="text/css" href="/app/<%= assets.style %>" /><% } %>
-    <% if (assets.version) { %><link rel="stylesheet" type="text/css" href="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.<%= assets.version %>.css" /><% } %>
+    <% if (assets.useCdn) { %><link rel="stylesheet" type="text/css" href="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.css" /><% } %>
     <% if (assets.customCss) { %><link rel="stylesheet" type="text/css" href="<%= assets.customCss %>" /><% } %>
   </head>
   <body>
@@ -30,9 +30,9 @@ module.exports = () => {
     <script type="text/javascript">window.config = <%- JSON.stringify(config) %>;</script>
     <% if (assets.vendors) { %><script type="text/javascript" src="/app/<%= assets.vendors %>"></script><% } %>
     <% if (assets.app) { %><script type="text/javascript" src="<%= assets.app %>"></script><% } %>
-    <% if (assets.version) { %>
-    <script type="text/javascript" src="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.vendors.<%= assets.version %>.js"></script>
-    <script type="text/javascript" src="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.<%= assets.version %>.js"></script>
+    <% if (assets.useCdn) { %>
+    <script type="text/javascript" src="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.vendors.js"></script>
+    <script type="text/javascript" src="//cdn.auth0.com/extensions/auth0-logs-to-provider/assets/auth0-logs-to-provider.ui.js"></script>
     <% } %>
   </body>
   </html>
@@ -53,16 +53,12 @@ module.exports = () => {
     };
 
     // Render from CDN.
-    const { A0EXT_PROVIDER, COMMON_CLIENT_VERSION } = process.env;
-    const clientVersion = COMMON_CLIENT_VERSION
-      ? COMMON_CLIENT_VERSION[A0EXT_PROVIDER] || COMMON_CLIENT_VERSION.default
-      : null;
-    if (clientVersion) {
+    if (process.env.NODE_ENV === 'production') {
       return res.send(ejs.render(template, {
         config: settings,
         assets: {
           customCss: config('CUSTOM_CSS'),
-          version: clientVersion
+          useCdn: true
         }
       }));
     }
