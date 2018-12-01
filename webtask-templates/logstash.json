@@ -1,0 +1,31 @@
+{
+  "title": "Auth0 Logs to Logstash",
+  "name": "auth0-logs-to-logstash",
+  "version": "2.1.0",
+  "preVersion": "2.0.7",
+  "description": "This extension will continuously export your Auth0 logs to Logstash",
+  "docsUrl": "https://auth0.com/docs/extensions/logstash",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-logstash/assets/logo.png",
+  "secrets": {
+    "LOGSTASH_URL": {
+      "description": "Logstash URL (from logstash-input-http)",
+      "example": "https://listener.logz.io:8071",
+      "required": true
+    },
+    "LOGSTASH_INDEX": {
+      "description": "Logstash Index (as defined in Logstash setup)",
+      "required": true
+    },
+    "LOGSTASH_TOKEN": {
+      "description": "Logstash Token (optional)",
+      "type": "password"
+    },
+    "LOGSTASH_USER": {
+      "description": "Logstash User (optional)"
+    },
+    "LOGSTASH_PASSWORD": {
+      "description": "Logstash Password (optional)",
+      "type": "password"
+    }
+  }
+}

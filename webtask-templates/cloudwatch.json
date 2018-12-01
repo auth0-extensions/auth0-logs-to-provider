@@ -1,0 +1,29 @@
+{
+  "title": "Logs to CloudWatch",
+  "name": "logs-to-cloudwatch",
+  "version": "2.0.1",
+  "description": "This extension will take all of your Auth0 logs and export them to CloudWatch",
+  "logoUrl": "https://truesightpulse.bmc.com/wp-content/uploads/2016/11/cloudwatch.png",
+  "secrets": {
+    "CLOUDWATCH_LOG_GROUP_NAME": {
+      "description": "Cloudwatch Log Group Name",
+      "required": true
+    },
+    "CLOUDWATCH_LOG_STREAM_NAME": {
+      "description": "Cloudwatch Log Group Stream Name",
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "AWS Access Key Id Host",
+      "required": true
+    },
+    "AWS_SECRET_KEY": {
+      "description": "AWS Secret Key",
+      "required": true
+    },
+    "AWS_REGION": {
+      "description": "AWS Region",
+      "required": true
+    }
+  }
+}

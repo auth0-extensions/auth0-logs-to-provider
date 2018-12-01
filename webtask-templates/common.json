@@ -1,13 +1,8 @@
 {
-  "title": "Auth0 Logs to Provider",
-  "name": "auth0-logs-to-provider",
-  "version": "0.1.0",
   "author": "auth0",
-  "description": "This extension will take all of your Auth0 logs and export them to any provider",
   "type": "cron",
   "category": "log_export",
   "initialUrlPath": "/login",
-  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-azure-blob-storage/assets/logo.svg",
   "repository": "https://github.com/auth0-extensions/auth0-logs-to-provider",
   "keywords": [
     "auth0",
@@ -21,7 +16,7 @@
   },
   "secrets": {
     "BATCH_SIZE": {
-      "description": "The amount of logs to batch before sending to Cloudwatch. A single cron execution will send multiple batches.",
+      "description": "The amount of logs to batch before sending. A single cron execution will send multiple batches.",
       "default": 100
     },
     "START_FROM": {
@@ -49,7 +44,7 @@
     "LOG_LEVEL": {
       "description": "This allows you to specify the log level of events that need to be sent",
       "type": "select",
-      "allowMultiple": true,
+      "allowMultiple": false,
       "options": [
         {
           "value": "-",
@@ -459,261 +454,6 @@
           "value": "ublkdu"
         }
       ]
-    },
-    "PROVIDER": {
-      "description": "Select Provider for logs exporting",
-      "type": "select",
-      "required": true,
-      "allowMultiple": false,
-      "options": [
-        {
-          "value": "",
-          "text": "Select Provider"
-        },
-        {
-          "value": "appinsights",
-          "text": "Application Insights"
-        },
-        {
-          "value": "blobstorage",
-          "text": "Azure Blob Storage"
-        },
-        {
-          "value": "cloudwatch",
-          "text": "CloudWatch"
-        },
-        {
-          "value": "logentries",
-          "text": "Logentries"
-        },
-        {
-          "value": "loggly",
-          "text": "Loggly"
-        },
-        {
-          "value": "logstash",
-          "text": "Logstash"
-        },
-        {
-          "value": "mixpanel",
-          "text": "Mixpanel"
-        },
-        {
-          "value": "papertrail",
-          "text": "Papertrail"
-        },
-        {
-          "value": "segment",
-          "text": "Segment"
-        },
-        {
-          "value": "splunk",
-          "text": "Splunk"
-        },
-        {
-          "value": "sumologic",
-          "text": "Sumologic"
-        }
-      ]
-    },
-    "APPINSIGHTS_INSTRUMENTATIONKEY": {
-      "visibleIf": {
-        "PROVIDER": "appinsights"
-      },
-      "description": "Application Insights instrumentationKey",
-      "required": true
-    },
-    "STORAGE_ACCOUNT_NAME": {
-      "visibleIf": {
-        "PROVIDER": "blobstorage"
-      },
-      "description": "Azure Storage Account Name",
-      "required": true
-    },
-    "STORAGE_ACCOUNT_KEY": {
-      "visibleIf": {
-        "PROVIDER": "blobstorage"
-      },
-      "description": "Azure Storage Account Key",
-      "required": true
-    },
-    "STORAGE_CONTAINER_NAME": {
-      "visibleIf": {
-        "PROVIDER": "blobstorage"
-      },
-      "description": "Azure Blob Storage Container Name",
-      "required": true
-    },
-    "CLOUDWATCH_LOG_GROUP_NAME": {
-      "visibleIf": {
-        "PROVIDER": "cloudwatch"
-      },
-      "description": "Cloudwatch Log Group Name",
-      "required": true
-    },
-    "CLOUDWATCH_LOG_STREAM_NAME": {
-      "visibleIf": {
-        "PROVIDER": "cloudwatch"
-      },
-      "description": "Cloudwatch Log Group Stream Name",
-      "required": true
-    },
-    "AWS_ACCESS_KEY_ID": {
-      "visibleIf": {
-        "PROVIDER": "cloudwatch"
-      },
-      "description": "AWS Access Key Id Host",
-      "required": true
-    },
-    "AWS_SECRET_KEY": {
-      "visibleIf": {
-        "PROVIDER": "cloudwatch"
-      },
-      "description": "AWS Secret Key",
-      "required": true
-    },
-    "AWS_REGION": {
-      "visibleIf": {
-        "PROVIDER": "cloudwatch"
-      },
-      "description": "AWS Region",
-      "required": true
-    },
-    "LOGENTRIES_TOKEN": {
-      "visibleIf": {
-        "PROVIDER": "logentries"
-      },
-      "description": "Logentries Token",
-      "required": true
-    },
-    "LOGGLY_CUSTOMER_TOKEN": {
-      "visibleIf": {
-        "PROVIDER": "loggly"
-      },
-      "description": "Loggly customer token",
-      "required": true,
-      "type": "password"
-    },
-    "LOGGLY_SUBDOMAIN": {
-      "visibleIf": {
-        "PROVIDER": "loggly"
-      },
-      "description": "Loggly subdomain"
-    },
-    "LOGSTASH_URL": {
-      "visibleIf": {
-        "PROVIDER": "logstash"
-      },
-      "description": "Logstash URL (from logstash-input-http)",
-      "required": true
-    },
-    "LOGSTASH_INDEX": {
-      "visibleIf": {
-        "PROVIDER": "logstash"
-      },
-      "description": "Logstash Index (as defined in Logstash setup)",
-      "required": true
-    },
-    "LOGSTASH_TOKEN": {
-      "visibleIf": {
-        "PROVIDER": "logstash"
-      },
-      "description": "Logstash Token (optional)",
-      "type": "password"
-    },
-    "LOGSTASH_USER": {
-      "visibleIf": {
-        "PROVIDER": "logstash"
-      },
-      "description": "Logstash User (optional)"
-    },
-    "LOGSTASH_PASSWORD": {
-      "visibleIf": {
-        "PROVIDER": "logstash"
-      },
-      "description": "Logstash Password (optional)",
-      "type": "password"
-    },
-    "MIXPANEL_TOKEN": {
-      "visibleIf": {
-        "PROVIDER": "mixpanel"
-      },
-      "description": "Mixpanel Token - this is your Mixpanel Token for your mixpanel project",
-      "required": true
-    },
-    "MIXPANEL_KEY": {
-      "visibleIf": {
-        "PROVIDER": "mixpanel"
-      },
-      "description": "Mixpanel Key - this is your Mixpanel Key for your mixpanel project",
-      "required": true,
-      "type": "password"
-    },
-    "PAPERTRAIL_HOST": {
-      "visibleIf": {
-        "PROVIDER": "papertrail"
-      },
-      "description": "Papertrail Host",
-      "required": true
-    },
-    "PAPERTRAIL_PORT": {
-      "visibleIf": {
-        "PROVIDER": "papertrail"
-      },
-      "description": "Papertrail Port",
-      "required": true
-    },
-    "PAPERTRAIL_SYSTEM": {
-      "visibleIf": {
-        "PROVIDER": "papertrail"
-      },
-      "description": "Papertrail System",
-      "default": "auth0-logs"
-    },
-    "SEGMENT_KEY": {
-      "visibleIf": {
-        "PROVIDER": "segment"
-      },
-      "description": "Segment API Key",
-      "required": true
-    },
-    "SPLUNK_URL": {
-      "visibleIf": {
-        "PROVIDER": "splunk"
-      },
-      "description": "Splunk URL - this is your Splunk HTTP Collector Endpoint",
-      "required": true
-    },
-    "SPLUNK_TOKEN": {
-      "visibleIf": {
-        "PROVIDER": "splunk"
-      },
-      "description": "Splunk Token - this is your Splunk Token",
-      "required": true,
-      "type": "password"
-    },
-    "SPLUNK_COLLECTOR_PORT": {
-      "visibleIf": {
-        "PROVIDER": "splunk"
-      },
-      "description": "HTTP Collector Port",
-      "required": true,
-      "default": 8088
-    },
-    "SPLUNK_COLLECTOR_PATH": {
-      "visibleIf": {
-        "PROVIDER": "splunk"
-      },
-      "description": "HTTP Collector Path (Endpoint)",
-      "required": false,
-      "default": "/services/collector/event/1.0"
-    },
-    "SUMOLOGIC_URL": {
-      "visibleIf": {
-        "PROVIDER": "sumologic"
-      },
-      "description": "Sumo Logic URL - this is your Sumo Logic HTTP Collector Endpoint",
-      "required": true
     }
   }
 }
