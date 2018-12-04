@@ -1,0 +1,49 @@
+{
+  "title": "Auth0 Management API Webhooks",
+  "name": "auth0-management-api-webhooks",
+  "version": "2.1.0",
+  "description": "Allows you to define webhooks for Auth0's Management API. It will go through the audit logs and call a webhook for specific events.",
+  "category": "webhook",
+  "docsUrl": "https://auth0.com/docs/extensions/management-api-webhooks",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-webhooks/assets/logo.svg",
+  "secrets": {
+    "AUTH0_API_ENDPOINTS": {
+      "description": "Allows you to filter specific API endpoints, comma separated.",
+      "example": "e.g.: users, connections, rules, emails, stats, clients, tenants"
+    },
+    "WEBHOOK_URL": {
+      "required": true,
+      "type": "text"
+    },
+    "AUTHORIZATION": {
+      "description": "Authorization Header (optional).",
+      "example": "Basic dm9yZGVsOnZvcmRlbA==",
+      "type": "text"
+    },
+    "SEND_AS_BATCH": {
+      "description": "If enabled, extension will send entire batch in one request. Otherwise, it will send requests one by one.",
+      "type": "select",
+      "allowMultiple": false,
+      "default": "true",
+      "options": [
+        {
+          "value": "true",
+          "text": "Enabled"
+        },
+        {
+          "value": "false",
+          "text": "Disabled"
+        }
+      ]
+    },
+    "WEBHOOK_CONCURRENT_CALLS": {
+      "description": "The maximum concurrent calls that will be made to your webhook",
+      "default": 5,
+      "visibleIf": {
+        "SEND_AS_BATCH": "false"
+      }
+    },
+    "LOG_LEVEL": {},
+    "LOG_TYPE": {}
+  }
+}

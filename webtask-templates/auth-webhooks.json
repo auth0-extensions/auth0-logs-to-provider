@@ -1,0 +1,44 @@
+{
+  "title": "Auth0 Authentication API webhooks",
+  "name": "auth0-authentication-api-webhooks",
+  "version": "2.1.3",
+  "preVersion": "2.0.0",
+  "description": "Allows you to define webhooks for Auth0's Authentication API. It will go through the audit logs and call a webhook for specific events.",
+  "category": "webhook",
+  "docsUrl": "https://auth0.com/docs/extensions/authentication-api-webhooks",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-authentication-api-webhooks/assets/logo.svg",
+  "secrets": {
+    "WEBHOOK_URL": {
+      "required": true,
+      "type": "text"
+    },
+    "AUTHORIZATION": {
+      "description": "Authorization Header (optional).",
+      "example": "Basic dm9yZGVsOnZvcmRlbA==",
+      "type": "text"
+    },
+    "SEND_AS_BATCH": {
+      "description": "If enabled, extension will send entire batch in one request. Otherwise, it will send requests one by one.",
+      "type": "select",
+      "allowMultiple": false,
+      "default": "true",
+      "options": [
+        {
+          "value": "true",
+          "text": "Enabled"
+        },
+        {
+          "value": "false",
+          "text": "Disabled"
+        }
+      ]
+    },
+    "WEBHOOK_CONCURRENT_CALLS": {
+      "description": "The maximum concurrent calls that will be made to your webhook",
+      "default": 5,
+      "visibleIf": {
+        "SEND_AS_BATCH": "false"
+      }
+    }
+  }
+}
