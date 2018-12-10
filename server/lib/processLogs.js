@@ -3,7 +3,7 @@ const loggingTools = require('auth0-log-extension-tools');
 
 const logger = require('./logger');
 const config = require('./config');
-const sendLogs = require(`./senders/${process.env.A0EXT_PROVIDER}`)();
+const sender = require(`./senders/${process.env.A0EXT_PROVIDER}`);
 
 const MS_PER_S = 1000;
 const NS_PER_MS = 1000000;
@@ -17,6 +17,8 @@ module.exports = (storage) =>
     if (!isCron) {
       return next();
     }
+
+    const sendLogs = sender();
 
     const updateLastRun = () =>
       storage.read()
@@ -42,11 +44,21 @@ module.exports = (storage) =>
       sendLogs(logs, requestFinished);
     };
 
-    const slack = new loggingTools.reporters.SlackReporter({
+    const slackConfig = {
       hook: config('SLACK_INCOMING_WEBHOOK_URL'),
       username: `auth0-logs-to-${provider}`,
       title: 'Logs Export'
-    });
+    };
+
+    if (provider === 'mgmt-webhooks') {
+      slackConfig.username = 'auth0-management-api-webhooks';
+      slackConfig.title = 'Management API Webhooks';
+    } else if (provider === 'auth-webhooks') {
+      slackConfig.username = 'auth0-authentication-api-webhooks';
+      slackConfig.title = 'Authentication API Webhooks';
+    }
+
+    const slack = new loggingTools.reporters.SlackReporter(slackConfig);
 
     const options = {
       domain: config('AUTH0_DOMAIN'),
@@ -67,6 +79,10 @@ module.exports = (storage) =>
 
     if (options.logTypes && !Array.isArray(options.logTypes)) {
       options.logTypes = options.logTypes.replace(/\s/g, '').split(',');
+    }
+
+    if (provider === 'mgmt-webhooks') {
+      options.logTypes = [ 'sapi', 'fapi' ];
     }
 
     const auth0logger = new loggingTools.LogsProcessor(storage, options);
