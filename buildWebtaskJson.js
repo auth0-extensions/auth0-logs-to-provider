@@ -20,6 +20,11 @@ const argv = yargs
   const commonWT = JSON.parse(fs.readFileSync('./webtask-templates/common.json'));
   const providerWT = JSON.parse(fs.readFileSync(`./webtask-templates/${provider}.json`));
   const secrets = Object.assign({}, commonWT.secrets, providerWT.secrets);
+
+  Object.keys(secrets).forEach(key => {
+    if (secrets[key] === null) delete secrets[key];
+  });
+
   const wtJson = Object.assign({}, commonWT, providerWT, { secrets });
 
   try {

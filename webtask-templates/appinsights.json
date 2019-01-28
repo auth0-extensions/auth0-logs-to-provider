@@ -1,7 +1,7 @@
 {
   "title": "Auth0 Logs to Application Insights",
   "name": "auth0-logs-to-application-insights",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "This extension will take all of your Auth0 logs and export them to Application Insights",
   "docsUrl": "https://auth0.com/docs/extensions/application-insight",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-application-insights/assets/logo.svg",

@@ -1,7 +1,7 @@
 {
   "title": "Auth0 Management API Webhooks",
   "name": "auth0-management-api-webhooks",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Allows you to define webhooks for Auth0's Management API. It will go through the audit logs and call a webhook for specific events.",
   "category": "webhook",
   "docsUrl": "https://auth0.com/docs/extensions/management-api-webhooks",
@@ -43,7 +43,7 @@
         "SEND_AS_BATCH": "false"
       }
     },
-    "LOG_LEVEL": {},
-    "LOG_TYPE": {}
+    "LOG_LEVEL": null,
+    "LOG_TYPES": null
   }
 }
