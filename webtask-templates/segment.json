@@ -1,18 +1,14 @@
 {
   "title": "Auth0 Logs to Segment",
   "name": "auth0-logs-to-segment",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "This extension will take all of your Auth0 logs and export them to Segment",
   "secrets": {
     "SEGMENT_KEY": {
       "description": "Segment API Key",
       "required": true
     },
-    "LOG_LEVEL": {
-      "disabled": true
-    },
-    "LOG_TYPES": {
-      "disabled": true
-    }
+    "LOG_LEVEL": null,
+    "LOG_TYPES": null
   }
 }

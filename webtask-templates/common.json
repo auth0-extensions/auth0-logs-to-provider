@@ -42,7 +42,7 @@
       ]
     },
     "LOG_LEVEL": {
-      "description": "This allows you to specify the log level of events that need to be sent",
+      "description": "This allows you to specify the log level of events that need to be sent. Selected level includes all levels above.",
       "type": "select",
       "allowMultiple": false,
       "options": [
@@ -51,24 +51,24 @@
           "text": ""
         },
         {
-          "value": "0",
-          "text": "Debug"
-        },
-        {
-          "value": "1",
-          "text": "Info"
-        },
-        {
-          "value": "2",
-          "text": "Warning"
+          "value": "4",
+          "text": "Critical"
         },
         {
           "value": "3",
           "text": "Error"
         },
         {
-          "value": "4",
-          "text": "Critical"
+          "value": "2",
+          "text": "Warning"
+        },
+        {
+          "value": "1",
+          "text": "Info"
+        },
+        {
+          "value": "0",
+          "text": "Debug"
         }
       ]
     },
