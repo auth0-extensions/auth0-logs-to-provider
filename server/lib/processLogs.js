@@ -83,6 +83,8 @@ module.exports = (storage) =>
 
     if (provider === 'mgmt-webhooks') {
       options.logTypes = [ 'sapi', 'fapi' ];
+    } else if (provider === 'segment') {
+      options.logTypes = [ 's', 'ss', 'f' ];
     }
 
     const auth0logger = new loggingTools.LogsProcessor(storage, options);
