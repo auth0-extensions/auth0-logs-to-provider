@@ -51,8 +51,16 @@ module.exports = () => {
     }
 
     request(options, (err, resp, body) => {
-      const error = err || (body && body.error) || null;
-      callback(error);
+      if (err || (resp && resp.statusCode >= 300)) {
+        const error = {
+          error: err || body || resp.statusMessage,
+          status: (resp && resp.statusCode) || 500
+        };
+
+        return callback(error);
+      }
+
+      return callback();
     });
   };
 
