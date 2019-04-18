@@ -2,6 +2,7 @@ const _ = require('lodash');
 const async = require('async');
 const Segment = require('analytics-node');
 const loggingTools = require('auth0-log-extension-tools');
+const managementApi = require('auth0-extension-tools').managementApi;
 
 const config = require('../config');
 const logger = require('../logger');
@@ -21,7 +22,13 @@ module.exports = () => {
         return cb();
       }
 
-      return req.auth0.users.get({ id: log.user_id })
+      return managementApi
+        .getClient({
+          domain: config('AUTH0_DOMAIN'),
+          clientId: config('AUTH0_CLIENT_ID'),
+          clientSecret: config('AUTH0_CLIENT_SECRET')
+        })
+        .then(auth0 => auth0.users.get({ id: log.user_id }))
         .then((user) => {
           analytics.track({
             userId: log.user_id,
