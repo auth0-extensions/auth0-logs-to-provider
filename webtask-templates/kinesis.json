@@ -1,0 +1,24 @@
+{
+    "title": "Logs to Kinesis",
+    "name": "logs-to-kineses",
+    "version": "1.0.0",
+    "description": "This extension will take all of your Auth0 logs and export them to Kinesis",
+    "secrets": {
+      "STREAM_NAME": {
+        "description": "ARN of the kinesis stream you wish to send logs to",
+        "required": true
+      },
+      "AWS_ACCESS_KEY_ID": {
+        "description": "AWS Access Key Id Host",
+        "required": true
+      },
+      "AWS_SECRET_KEY": {
+        "description": "AWS Secret Key",
+        "required": true
+      },
+      "AWS_REGION": {
+        "description": "AWS Region",
+        "required": true
+      }
+    }
+  }
