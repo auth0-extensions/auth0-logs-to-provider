@@ -1,0 +1,479 @@
+{
+  "author": "auth0",
+  "type": "cron",
+  "category": "log_export",
+  "initialUrlPath": "/login",
+  "repository": "https://github.com/auth0-extensions/auth0-logs-to-provider",
+  "keywords": [
+    "auth0",
+    "extension"
+  ],
+  "schedule": "0 */5 * * * *",
+  "auth0": {
+    "createClient": true,
+    "onUninstallPath": "/.extensions/on-uninstall",
+    "scopes": "read:logs delete:clients"
+  },
+  "secrets": {
+    "BATCH_SIZE": {
+      "description": "The amount of logs to batch before sending. A single cron execution will send multiple batches.",
+      "default": 100
+    },
+    "START_FROM": {
+      "description": "Checkpoint ID of log to start from."
+    },
+    "SLACK_INCOMING_WEBHOOK_URL": {
+      "description": "Slack Incoming Webhook URL used to report statistics and possible failures"
+    },
+    "SLACK_SEND_SUCCESS": {
+      "description": "This setting will enable verbose notifications to Slack which are useful for troubleshooting",
+      "type": "select",
+      "allowMultiple": false,
+      "default": "false",
+      "options": [
+        {
+          "value": "false",
+          "text": "No"
+        },
+        {
+          "value": "true",
+          "text": "Yes"
+        }
+      ]
+    },
+    "LOG_LEVEL": {
+      "description": "This allows you to specify the log level of events that need to be sent. Selected level includes all levels above.",
+      "type": "select",
+      "allowMultiple": false,
+      "options": [
+        {
+          "value": "-",
+          "text": ""
+        },
+        {
+          "value": "4",
+          "text": "Critical"
+        },
+        {
+          "value": "3",
+          "text": "Error"
+        },
+        {
+          "value": "2",
+          "text": "Warning"
+        },
+        {
+          "value": "1",
+          "text": "Info"
+        },
+        {
+          "value": "0",
+          "text": "Debug"
+        }
+      ]
+    },
+    "LOG_TYPES": {
+      "description": "If you only want to send events with a specific type (eg: failed logins)",
+      "type": "select",
+      "allowMultiple": true,
+      "options": [
+        {
+          "text": "",
+          "value": "-"
+        },
+        {
+          "text": "Success Login",
+          "value": "s"
+        },
+        {
+          "text": "Success Silent Auth",
+          "value": "ssa"
+        },
+        {
+          "text": "Failed Silent Auth",
+          "value": "fsa"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "seacft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "feacft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "seccft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "feccft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "sepft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "fepft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "sertft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "fertft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "seoobft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "feoobft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "seotpft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "feotpft"
+        },
+        {
+          "text": "Success Exchange",
+          "value": "sercft"
+        },
+        {
+          "text": "Failed Exchange",
+          "value": "fercft"
+        },
+        {
+          "text": "Failed Login",
+          "value": "f"
+        },
+        {
+          "text": "Warning",
+          "value": "w"
+        },
+        {
+          "text": "Deprecation Notice",
+          "value": "depnote"
+        },
+        {
+          "text": "Deleted User",
+          "value": "du"
+        },
+        {
+          "text": "Failed Login (invalid email/username)",
+          "value": "fu"
+        },
+        {
+          "text": "Failed Login (wrong password)",
+          "value": "fp"
+        },
+        {
+          "text": "Failed by Connector",
+          "value": "fc"
+        },
+        {
+          "text": "Failed by CORS",
+          "value": "fco"
+        },
+        {
+          "text": "Connector Online",
+          "value": "con"
+        },
+        {
+          "text": "Connector Offline",
+          "value": "coff"
+        },
+        {
+          "text": "Failed Connector Provisioning",
+          "value": "fcpro"
+        },
+        {
+          "text": "Success Signup",
+          "value": "ss"
+        },
+        {
+          "text": "Failed Signup",
+          "value": "fs"
+        },
+        {
+          "text": "Code Sent",
+          "value": "cs"
+        },
+        {
+          "text": "Code/Link Sent",
+          "value": "cls"
+        },
+        {
+          "text": "Success Verification Email",
+          "value": "sv"
+        },
+        {
+          "text": "Failed Verification Email",
+          "value": "fv"
+        },
+        {
+          "text": "Success Change Password",
+          "value": "scp"
+        },
+        {
+          "text": "Failed Change Password",
+          "value": "fcp"
+        },
+        {
+          "text": "Success Post Change Password Hook",
+          "value": "scph"
+        },
+        {
+          "text": "Failed Post Change Password Hook",
+          "value": "fcph"
+        },
+        {
+          "text": "Success Change Email",
+          "value": "sce"
+        },
+        {
+          "text": "Failed Change Email",
+          "value": "fce"
+        },
+        {
+          "text": "Success Change Username",
+          "value": "scu"
+        },
+        {
+          "text": "Failed Change Username",
+          "value": "fcu"
+        },
+        {
+          "text": "Success Change Phone Number",
+          "value": "scpn"
+        },
+        {
+          "text": "Failed Change Phone Number",
+          "value": "fcpn"
+        },
+        {
+          "text": "Success Verification Email Request",
+          "value": "svr"
+        },
+        {
+          "text": "Failed Verification Email Request",
+          "value": "fvr"
+        },
+        {
+          "text": "Success Change Password Request",
+          "value": "scpr"
+        },
+        {
+          "text": "Failed Change Password Request",
+          "value": "fcpr"
+        },
+        {
+          "text": "Failed Sending Notification",
+          "value": "fn"
+        },
+        {
+          "text": "API Operation",
+          "value": "sapi"
+        },
+        {
+          "text": "Failed API Operation",
+          "value": "fapi"
+        },
+        {
+          "text": "Blocked Account",
+          "value": "limit_wc"
+        },
+        {
+          "text": "Blocked IP Address",
+          "value": "limit_mu"
+        },
+        {
+          "text": "Too Many Calls to /userinfo",
+          "value": "limit_ui"
+        },
+        {
+          "text": "Rate Limit On API",
+          "value": "api_limit"
+        },
+        {
+          "text": "Too Many Calls to /delegation",
+          "value": "limit_delegation"
+        },
+        {
+          "text": "Successful User Deletion",
+          "value": "sdu"
+        },
+        {
+          "text": "Failed User Deletion",
+          "value": "fdu"
+        },
+        {
+          "text": "Auth0 Update Launched",
+          "value": "admin_update_launch"
+        },
+        {
+          "text": "Auth0 OS Update Started",
+          "value": "sys_os_update_start"
+        },
+        {
+          "text": "Auth0 OS Update Ended",
+          "value": "sys_os_update_end"
+        },
+        {
+          "text": "Auth0 Update Started",
+          "value": "sys_update_start"
+        },
+        {
+          "text": "Auth0 Update Ended",
+          "value": "sys_update_end"
+        },
+        {
+          "text": "Success Logout",
+          "value": "slo"
+        },
+        {
+          "text": "Failed Logout",
+          "value": "flo"
+        },
+        {
+          "text": "Success Delegation",
+          "value": "sd"
+        },
+        {
+          "text": "Failed Delegation",
+          "value": "fd"
+        },
+        {
+          "text": "Unenroll device account",
+          "value": "gd_unenroll"
+        },
+        {
+          "text": "Update device account",
+          "value": "gd_update_device_account"
+        },
+        {
+          "text": "Module switch",
+          "value": "gd_module_switch"
+        },
+        {
+          "text": "Guardian tenant update",
+          "value": "gd_tenant_update"
+        },
+        {
+          "text": "Second factor started",
+          "value": "gd_start_auth"
+        },
+        {
+          "text": "Enroll started",
+          "value": "gd_start_enroll"
+        },
+        {
+          "text": "MFA Enrollment start failed",
+          "value": "gd_start_enroll_failed"
+        },
+        {
+          "text": "User delete",
+          "value": "gd_user_delete"
+        },
+        {
+          "text": "OTP Auth suceed",
+          "value": "gd_auth_succeed"
+        },
+        {
+          "text": "OTP Auth failed",
+          "value": "gd_auth_failed"
+        },
+        {
+          "text": "Push notification sent",
+          "value": "gd_send_pn"
+        },
+        {
+          "text": "Error sending MFA Push Notification",
+          "value": "gd_send_pn_failure"
+        },
+        {
+          "text": "OTP Auth rejected",
+          "value": "gd_auth_rejected"
+        },
+        {
+          "text": "Recovery succeed",
+          "value": "gd_recovery_succeed"
+        },
+        {
+          "text": "Recovery failed",
+          "value": "gd_recovery_failed"
+        },
+        {
+          "text": "SMS Sent",
+          "value": "gd_send_sms"
+        },
+        {
+          "text": "Error sending MFA SMS",
+          "value": "gd_send_sms_failure"
+        },
+        {
+          "text": "Too many failures",
+          "value": "gd_otp_rate_limit_exceed"
+        },
+        {
+          "text": "Too many failures",
+          "value": "gd_recovery_rate_limit_exceed"
+        },
+        {
+          "text": "Guardian enrollment complete",
+          "value": "gd_enrollment_complete"
+        },
+        {
+          "text": "Users import",
+          "value": "fui"
+        },
+        {
+          "text": "Users import",
+          "value": "sui"
+        },
+        {
+          "text": "Breached password",
+          "value": "pwd_leak"
+        },
+        {
+          "text": "Failed cross origin authentication",
+          "value": "fcoa"
+        },
+        {
+          "text": "Success cross origin authentication",
+          "value": "scoa"
+        },
+        {
+          "text": "Account unblocked",
+          "value": "ublkdu"
+        }
+      ]
+    },
+    "STREAM_NAME": {
+      "description": "ARN of the kinesis stream you wish to send logs to",
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "AWS Access Key Id Host",
+      "required": true
+    },
+    "AWS_SECRET_KEY": {
+      "description": "AWS Secret Key",
+      "required": true
+    },
+    "AWS_REGION": {
+      "description": "AWS Region",
+      "required": true
+    }
+  },
+  "title": "Logs to Kinesis",
+  "name": "logs-to-kineses",
+  "version": "1.0.0",
+  "description": "This extension will take all of your Auth0 logs and export them to Kinesis"
+}

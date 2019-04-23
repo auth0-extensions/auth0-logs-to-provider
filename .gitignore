@@ -37,4 +37,3 @@ node_modules
 server/data.json
 server/config.json
 dist
-webtask.json
