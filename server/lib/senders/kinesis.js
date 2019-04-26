@@ -22,7 +22,7 @@ const logger = require('../logger');
       chunked_arr.push(copied.splice(0, size));
     }
     return chunked_arr;
-  }
+  };
 
 
    return (logs, callback) => {
@@ -37,14 +37,14 @@ const logger = require('../logger');
     chunks.forEach(logChunk => {
       const records = logChunk.map((log) => {
           log.id = log._id;
-          delete log._id
-          return { PartitionKey: String(Math.random() * 100000), Data: JSON.stringify(log) }
-      })
+          delete log._id;
+          return { PartitionKey: String(Math.random() * 100000), Data: JSON.stringify(log) };
+      });
 
-      var params = {
+      const params = {
         Records: records,
         StreamName: config('STREAM_NAME')
-      }
+      };
 
       kinesis.putRecords(params, (err, result) => {
         callback(err, result);
