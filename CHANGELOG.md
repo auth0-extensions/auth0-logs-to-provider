@@ -4,7 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.4] - Unreleased
+## [0.2.0] - 2019-04-30
+
+### auth0-logs-to-mixpanel v2.3.0
+
+- #### Added
+  - Added option (SEND_AS_BATCH) to send logs one-by-one.
+  - `mixpanel` module version updated to `0.9.2`
+  
+## [0.1.5] - 2019-04-18
+
+### auth0-logs-to-segment v2.0.1
+
+- #### Fixed
+  - Required grants for segment extension added.
+  - Retrieving of user data fixed.
+  
+## [0.1.4] - 2019-04-18
 
 ### auth0-logs-to-logstash v2.2.1
 

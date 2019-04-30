@@ -1,8 +1,13 @@
 {
   "title": "Auth0 Logs to Segment",
   "name": "auth0-logs-to-segment",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This extension will take all of your Auth0 logs and export them to Segment",
+  "auth0": {
+    "createClient": true,
+    "onUninstallPath": "/.extensions/on-uninstall",
+    "scopes": "read:logs read:users delete:clients"
+  },
   "secrets": {
     "SEGMENT_KEY": {
       "description": "Segment API Key",
