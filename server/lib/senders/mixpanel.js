@@ -1,3 +1,4 @@
+const async = require('async');
 const Mixpanel = require('mixpanel');
 
 const loggingTools = require('auth0-log-extension-tools');
@@ -8,15 +9,11 @@ module.exports = () => {
   const normalizeErrors = errors =>
     errors.map(err => ({ name: err.name, message: err.message, stack: err.stack }));
 
-  const Logger = Mixpanel.init(config('MIXPANEL_TOKEN'), {
-    key: config('MIXPANEL_KEY')
-  });
+  const batchMode = config('SEND_AS_BATCH') === true || config('SEND_AS_BATCH') === 'true';
+  const concurrentCalls = parseInt(config('CONCURRENT_CALLS'), 10) || 5;
+  const Logger = Mixpanel.init(config('MIXPANEL_TOKEN'), { key: config('MIXPANEL_KEY') });
 
-  const sendLogs = (logs, cb) => {
-    if (!logs || !logs.length) {
-      cb();
-    }
-
+  const sendBatch = (logs, cb) =>
     Logger.import_batch(logs, function(errorList) {
       if (errorList && errorList.length > 0) {
         if (logs.length > 10) {
@@ -41,6 +38,22 @@ module.exports = () => {
       logger.info(`${logs.length} events successfully sent to mixpanel.`);
       return cb();
     });
+
+  const sendOne = (log, cb) =>
+    Logger.import(log.event, log.date || new Date(), log.properties, cb);
+
+  const sendLogs = (logs, cb) => {
+    if (!logs || !logs.length) {
+      cb();
+    }
+
+    if (batchMode) {
+      logger.info(`Sending batch of ${logs.length} logs.`);
+      return sendBatch(logs, cb);
+    }
+
+    logger.info(`Sending ${logs.length} one by one with ${concurrentCalls} concurrent calls.`);
+    return async.eachLimit(logs, concurrentCalls, sendOne, cb);
   };
 
   return (logs, cb) => {

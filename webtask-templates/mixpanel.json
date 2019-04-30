@@ -1,8 +1,8 @@
 {
   "title": "Auth0 Logs to Mixpanel",
   "name": "auth0-logs-to-mixpanel",
-  "version": "2.2.0",
-  "preVersion": "2.1.0",
+  "version": "2.3.0",
+  "preVersion": "2.2.0",
   "description": "This extension will take all of your Auth0 logs and export them to Mixpanel",
   "docsUrl": "https://auth0.com/docs/extensions/mixpanel",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-mixpanel/assets/logo.png",
@@ -19,6 +19,29 @@
     "BATCH_SIZE": {
       "description": "The amount of logs to be read on each execution. Maximum is 20.",
       "default": 20
+    },
+    "SEND_AS_BATCH": {
+      "description": "If enabled, extension will send entire batch in one request. Otherwise, it will send requests one by one.",
+      "type": "select",
+      "allowMultiple": false,
+      "default": "true",
+      "options": [
+        {
+          "value": "true",
+          "text": "Enabled"
+        },
+        {
+          "value": "false",
+          "text": "Disabled"
+        }
+      ]
+    },
+    "CONCURRENT_CALLS": {
+      "description": "The maximum concurrent calls that will be made to the Mixpanel",
+      "default": 5,
+      "visibleIf": {
+        "SEND_AS_BATCH": "false"
+      }
     }
   }
 }
