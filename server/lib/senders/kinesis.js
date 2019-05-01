@@ -11,7 +11,7 @@ module.exports = () => {
   });
 
   const kinesis = new AWS.Kinesis({ apiVersion: '2013-12-02' });
-
+  // these are the max number of records that can be sent to kinesis
   const maxRecords = 500;
 
   const chunk = (array, size) => {
@@ -22,30 +22,33 @@ module.exports = () => {
       chunked_arr.push(copied.splice(0, size));
     }
     return chunked_arr;
-  }
+  };
 
 
-  return (logs, callback) => {
+   return (logs, callback) => {
     if (!logs || !logs.length) {
       return callback();
     }
 
     logger.info(`Sending ${logs.length} logs to Kinesis...`);
-    // these are the max number of records that can be sent to kinesis
+
     const chunks = chunk(logs, maxRecords);
 
     chunks.forEach(logChunk => {
-        const records = logChunk.map(log => ({ PartitionKey: String(numbers.random() * 100000), Data: JSON.stringify(log) }));
+      const records = logChunk.map((log) => {
+          log.id = log._id;
+          delete log._id;
+          return { PartitionKey: String(Math.random() * 100000), Data: JSON.stringify(log) };
+      });
 
-        var params = {
-            Records: records,
-            StreamName: config('STREAM_NAME')
-        }
+      const params = {
+        Records: records,
+        StreamName: config('STREAM_NAME')
+      };
 
-        kinesis.putRecords(params,
-        (err, result) => {
-            callback(err, result);
-        });
+      kinesis.putRecords(params, (err, result) => {
+        callback(err, result);
+      });
     });
   };
 };
