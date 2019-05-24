@@ -18,21 +18,19 @@ module.exports = () => {
 
     logger.info(`Sending ${logs.length} logs to Kinesis...`);
 
-    logs.forEach(log => {
-      const records = log.map((log) => {
-          log.id = log._id;
-          delete log._id;
-          return { PartitionKey: String(Math.random() * 100000), Data: JSON.stringify(log) };
-      });
+    const records = log.map((log) => {
+        log.id = log._id;
+        delete log._id;
+        return { PartitionKey: String(Math.random() * 100000), Data: JSON.stringify(log) };
+    });
 
-      const params = {
-        Records: records,
-        StreamName: config('STREAM_NAME')
-      };
+    const params = {
+      Records: records,
+      StreamName: config('STREAM_NAME')
+    };
 
-      kinesis.putRecords(params, (err, result) => {
-        callback(err, result);
-      });
+    kinesis.putRecords(params, (err, result) => {
+      callback(err, result);
     });
   };
 };
