@@ -5,14 +5,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/auth0-extensions/auth0-logs-to-provider.git"
+    "url": "git+https://github.com/szakavatott/auth0-logs-to-provider.git"
   },
-  "author": "auth0",
+  "author": "ecp",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/auth0-extensions/auth0-logs-to-provider.git/issues"
+    "url": "https://github.com/szakavatott/auth0-logs-to-provider.git/issues"
   },
-  "homepage": "https://github.com/auth0-extensions/auth0-logs-to-provider.git#readme",
+  "homepage": "https://github.com/szakavatott/auth0-logs-to-provider.git#readme",
   "scripts": {
     "build": "npm run clean && npm run client:build && npm run extension:build",
     "clean": "rimraf dist",
