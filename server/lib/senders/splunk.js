@@ -27,7 +27,8 @@ module.exports = () => {
     }
 
     logs.forEach(function(entry) {
-      Logger.send({ message: entry });
+      // The default time format in Splunk is epoch time format, in the format <sec>.<ms>
+      Logger.send({ message: entry, metadata: {time: new Date(entry.date).getTime()/1000} });
     });
 
     logger.info(`Sending ${logs.length} logs to Splunk...`);
