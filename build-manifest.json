@@ -1,0 +1,21 @@
+{
+  "0.2.1": [
+    "splunk",
+    "appinsights"
+  ],
+  "full-list": [
+    "appinsights",
+    "auth-webhooks",
+    "blobstorage",
+    "cloudwatch",
+    "logentries",
+    "loggly",
+    "logstash",
+    "mgmt-webhooks",
+    "mixpanel",
+    "papertrail",
+    "segment",
+    "splunk",
+    "sumologic"
+  ]
+}

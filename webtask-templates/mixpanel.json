@@ -18,7 +18,7 @@
     },
     "BATCH_SIZE": {
       "description": "The amount of logs to be read on each execution. Maximum is 20. Default is 10",
-      "default": 10
+      "default": "10"
     },
     "SEND_AS_BATCH": {
       "description": "If enabled, extension will send entire batch in one request. Otherwise, it will send requests one by one.",
@@ -38,7 +38,7 @@
     },
     "CONCURRENT_CALLS": {
       "description": "The maximum concurrent calls that will be made to the Mixpanel",
-      "default": 5,
+      "default": "5",
       "visibleIf": {
         "SEND_AS_BATCH": "false"
       }

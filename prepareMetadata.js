@@ -15,8 +15,12 @@ const argv = yargs
     throw new Error('Cannot build webtask.json, provider not set.');
   }
 
+  prepareDirectory('./dist');
+  prepareDirectory(`./dist/${provider}`);
+
   updateLogTypes();
 
+  const originalPackage = JSON.parse(fs.readFileSync('./package.json'));
   const commonWT = JSON.parse(fs.readFileSync('./webtask-templates/common.json'));
   const providerWT = JSON.parse(fs.readFileSync(`./webtask-templates/${provider}.json`));
   const secrets = Object.assign({}, commonWT.secrets, providerWT.secrets);
@@ -27,17 +31,26 @@ const argv = yargs
 
   const wtJson = Object.assign({}, commonWT, providerWT, { secrets });
 
-  try {
-    const content = JSON.stringify(wtJson, null, '  ');
+  const newPackage = Object.assign({}, originalPackage);
+  Object.assign(newPackage['auth0-extension'], wtJson);
+  newPackage.name = wtJson.name;
+  newPackage.version = wtJson.version;
+  newPackage.keywords = wtJson.keywords;
+  const forbiddenProps = [ 'name', 'version', 'preVersion', 'author', 'keywords', 'description', 'repository' ];
 
-    fs.writeFile('./webtask.json', content + '\n', (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.info(`Successfully generated webtask.json for ${provider} provider`);
-      }
-      return null;
-    });
+  forbiddenProps.forEach(prop => {
+    if (newPackage['auth0-extension'][prop] !== undefined) {
+      delete newPackage['auth0-extension'][prop];
+    }
+  });
+
+  try {
+    const webtaskContent = JSON.stringify(wtJson, null, '  ');
+    const pkgContent = JSON.stringify(newPackage, null, '  ');
+
+    fs.writeFileSync('./webtask.json', webtaskContent + '\n');
+    fs.writeFileSync(`./dist/${provider}/package.json`, pkgContent + '\n');
+    console.info(`Successfully generated webtask.json for ${provider} provider`);
   } catch (e) {
     console.error(e);
     return null;
@@ -45,7 +58,7 @@ const argv = yargs
 }());
 
 function updateLogTypes () {
-  const options = [ { text: '', value: '-' }];
+  const options = [ { text: 'All', value: '-' }];
 
   for (let key in getLogTypes) {
     if (getLogTypes[key] && getLogTypes[key].name) {
@@ -66,5 +79,13 @@ function updateLogTypes () {
     console.error(e);
 
     return null;
+  }
+}
+
+function prepareDirectory (dir) {
+  try {
+    fs.statSync(dir);
+  } catch(e) {
+    fs.mkdirSync(dir);
   }
 }

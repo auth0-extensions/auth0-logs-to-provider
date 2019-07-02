@@ -35,7 +35,7 @@
     },
     "WEBHOOK_CONCURRENT_CALLS": {
       "description": "The maximum concurrent calls that will be made to your webhook",
-      "default": 5,
+      "default": "5",
       "visibleIf": {
         "SEND_AS_BATCH": "false"
       }
