@@ -34,7 +34,7 @@ const argv = yargs
 
 function deployProvider (providerName) {
   console.log(`Deploying logs-to-${providerName} extension...`);
-  const url = argv.provider || 'http://0.0.0.0:3000/api/extensions';
+  const url = argv.url || 'http://0.0.0.0:3000/api/extensions';
   const command = `a0-ext deploy --package ./dist/${providerName}/package.zip --url ${url}`;
 
   try {
