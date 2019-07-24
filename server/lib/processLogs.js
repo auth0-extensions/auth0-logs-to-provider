@@ -71,7 +71,14 @@ module.exports = (storage) =>
       logger
     };
 
-    const maxBatchSize = (provider === 'mixpanel') ? 20 : (options.batchSize || 100);
+    let maxBatchSize = 100;
+
+    if (provider === 'mixpanel') {
+      maxBatchSize = 20;
+    }
+    else if (options.batchSize === 1000) {
+      maxBatchSize = options.batchSize;
+    }
 
     if (!options.batchSize || options.batchSize > maxBatchSize) {
       options.batchSize = maxBatchSize;
