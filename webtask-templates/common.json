@@ -41,6 +41,22 @@
         }
       ]
     },
+    "SLACK_SEND_DAILY_REPORT": {
+      "description": "This setting will enable daily reports on logs processed, errors and warnings.",
+      "type": "select",
+      "allowMultiple": false,
+      "default": "true",
+      "options": [
+        {
+          "value": "false",
+          "text": "No"
+        },
+        {
+          "value": "true",
+          "text": "Yes"
+        }
+      ]
+    },
     "LOG_LEVEL": {
       "description": "This allows you to specify the log level of events that need to be sent. Selected level includes all levels above.",
       "type": "select",
