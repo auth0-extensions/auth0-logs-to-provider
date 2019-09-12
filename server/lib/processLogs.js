@@ -117,7 +117,9 @@ module.exports = (storage) =>
           const reportTime = config('DAILY_REPORT_TIME') || 16;
 
           if (data.lastReportDate !== now && new Date().getHours() >= reportTime) {
-            sendDailyReport(now);
+            if (config('SLACK_SEND_DAILY_REPORT') === true || config('SLACK_SEND_DAILY_REPORT') === 'true')) {
+              sendDailyReport(now);
+            }
           }
         })
     };
