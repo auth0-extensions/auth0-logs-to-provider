@@ -1,8 +1,8 @@
 {
   "title": "Auth0 Logs to Sumo Logic",
   "name": "auth0-logs-to-sumologic",
-  "version": "2.1.0",
-  "preVersion": "2.0.10",
+  "version": "2.1.1",
+  "preVersion": "2.1.0",
   "description": "This extension will take all of your Auth0 logs and export them to Sumo Logic",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-sumologic/assets/logo.png",
   "docsUrl": "https://auth0.com/docs/extensions/sumologic",
