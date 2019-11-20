@@ -4,10 +4,7 @@
   "category": "log_export",
   "initialUrlPath": "/login",
   "repository": "https://github.com/auth0-extensions/auth0-logs-to-provider",
-  "keywords": [
-    "auth0",
-    "extension"
-  ],
+  "keywords": ["auth0", "extension"],
   "schedule": "0 */5 * * * *",
   "auth0": {
     "createClient": true,
@@ -452,6 +449,14 @@
         {
           "text": "Account unblocked",
           "value": "ublkdu"
+        },
+        {
+          "text": "Success Login",
+          "value": "sens"
+        },
+        {
+          "text": "Failed Login",
+          "value": "fens"
         }
       ]
     }
