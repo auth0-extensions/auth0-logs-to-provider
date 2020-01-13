@@ -1,8 +1,8 @@
 {
   "title": "Auth0 Logs to Logstash",
   "name": "auth0-logs-to-logstash",
-  "version": "2.2.2",
-  "preVersion": "2.2.1",
+  "version": "2.2.3",
+  "preVersion": "2.2.2",
   "description": "This extension will continuously export your Auth0 logs to Logstash",
   "docsUrl": "https://auth0.com/docs/extensions/logstash",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-logstash/assets/logo.png",

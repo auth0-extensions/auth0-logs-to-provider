@@ -1,8 +1,8 @@
 {
   "title": "Auth0 Authentication API webhooks",
   "name": "auth0-authentication-api-webhooks",
-  "version": "2.2.4",
-  "preVersion": "2.2.3",
+  "version": "2.2.5",
+  "preVersion": "2.2.4",
   "description": "Allows you to define webhooks for Auth0's Authentication API. It will go through the audit logs and call a webhook for specific events.",
   "category": "webhook",
   "docsUrl": "https://auth0.com/docs/extensions/authentication-api-webhooks",
