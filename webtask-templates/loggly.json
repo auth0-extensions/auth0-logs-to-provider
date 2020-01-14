@@ -1,7 +1,7 @@
 {
   "title": "Auth0 Logs to Loggly",
   "name": "auth0-logs-to-loggly",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "This extension will take all of your Auth0 logs and export them to Loggly",
   "docsUrl": "https://auth0.com/docs/extensions/loggly",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-loggly/assets/logo.svg",
