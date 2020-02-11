@@ -1,7 +1,7 @@
 {
   "title": "Auth0 Logs to Papertrail",
   "name": "auth0-logs-to-papertrail",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "This extension will take all of your Auth0 logs and export them to Papertrail",
   "docsUrl": "https://auth0.com/docs/extensions/papertrail",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-papertrail/assets/logo.png",
