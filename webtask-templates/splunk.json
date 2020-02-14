@@ -4,7 +4,7 @@
   "version": "2.3.1",
   "preVersion": "2.3.0",
   "description": "This extension will take all of your Auth0 logs and export them to Splunk",
-  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-splunk/assets/logo.svg",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-splunk/assets/logo.png",
   "secrets": {
     "SPLUNK_URL": {
       "description": "Splunk URL - this is your Splunk HTTP Collector Endpoint",
