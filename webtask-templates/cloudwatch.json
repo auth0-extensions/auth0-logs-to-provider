@@ -3,7 +3,7 @@
   "name": "logs-to-cloudwatch",
   "version": "2.2.1",
   "description": "This extension will take all of your Auth0 logs and export them to CloudWatch",
-  "logoUrl": "https://truesightpulse.bmc.com/wp-content/uploads/2016/11/cloudwatch.png",
+  "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-cloudwatch/assets/logo.png",
   "secrets": {
     "CLOUDWATCH_LOG_GROUP_NAME": {
       "description": "Cloudwatch Log Group Name",
