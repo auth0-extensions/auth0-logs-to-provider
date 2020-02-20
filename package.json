@@ -1,6 +1,6 @@
 {
   "name": "auth0-logs-to-provider",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "This extension will take all of your Auth0 logs and export them to any provider from the list.",
   "main": "index.js",
   "repository": {
