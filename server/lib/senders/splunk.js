@@ -4,6 +4,8 @@ const config = require('../config');
 const logger = require('../logger');
 
 module.exports = () => {
+  const errors = [];
+
   const Logger = new SplunkLogger({
     token: config('SPLUNK_TOKEN'),
     url: config('SPLUNK_URL'),
@@ -18,6 +20,8 @@ module.exports = () => {
 
   Logger.error = function(err, context) {
     // Handle errors here
+
+    errors.push(err && err.message || err);
     logger.error('error', err, 'context', context);
   };
 
@@ -35,8 +39,13 @@ module.exports = () => {
 
     Logger.flush(function(error, response, body) {
       logger.info('Splunk response', body);
+
       if (error) {
-        return cb({ error: error, message: 'Error sending logs to Splunk' });
+        errors.push(error);
+      }
+
+      if (errors.length) {
+        return cb({ errors, message: 'Error sending logs to Splunk' });
       }
 
       logger.info('Upload complete.');
