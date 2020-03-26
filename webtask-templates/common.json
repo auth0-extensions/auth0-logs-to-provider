@@ -123,6 +123,10 @@
           "value": "fertft"
         },
         {
+          "text": "Failed Exchange",
+          "value": "ferrt"
+        },
+        {
           "text": "Success Exchange",
           "value": "seoobft"
         },
