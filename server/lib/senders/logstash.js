@@ -30,7 +30,7 @@ module.exports = () => {
       data[key] = log[key];
     });
 
-    data[index] = log[index] || 'auth0';
+    data.index = index || 'auth0';
     data.message = JSON.stringify(log);
 
     const options = {
