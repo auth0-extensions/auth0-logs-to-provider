@@ -1,7 +1,8 @@
 {
   "title": "Logs to CloudWatch",
   "name": "logs-to-cloudwatch",
-  "version": "2.2.2",
+  "version": "2.3.0",
+  "preVersion": "2.2.2",
   "description": "This extension will take all of your Auth0 logs and export them to CloudWatch",
   "logoUrl": "https://cdn.auth0.com/extensions/auth0-logs-to-cloudwatch/assets/logo.png",
   "secrets": {
