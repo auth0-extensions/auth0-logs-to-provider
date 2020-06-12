@@ -13,7 +13,7 @@
   },
   "secrets": {
     "BATCH_SIZE": {
-      "description": "The amount of logs to batch before sending. A single cron execution will send multiple batches. ALERT: the MAXIMUM value is 100 after which errors may occur.",
+      "description": "The amount of logs to batch before sending. A single cron execution will send multiple batches. ALERT: the maximum value is 100.",
       "default": 100
     },
     "START_FROM": {
