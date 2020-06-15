@@ -1,8 +1,8 @@
 {
   "title": "Auth0 Logs to Segment",
   "name": "auth0-logs-to-segment",
-  "version": "2.1.2",
-  "preVersion": "2.1.1",
+  "version": "2.1.3",
+  "preVersion": "2.1.2",
   "description": "This extension will take all of your Auth0 logs and export them to Segment",
   "auth0": {
     "createClient": true,
