@@ -16,7 +16,7 @@ const getClient = () => {
   // Override the original getEnvelope method to allow setting a custom time.
   const originalGetEnvelope = client.getEnvelope;
   client.getEnvelope = (data, tagOverrides) => {
-    let envelope = originalGetEnvelope.apply(client, [data, tagOverrides]);
+    let envelope = _.cloneDeep(originalGetEnvelope.apply(client, [data, tagOverrides]));
     envelope.time = data.baseData.properties.date;
     envelope.os = data.baseData.properties.os;
     envelope.osVer = data.baseData.properties.os_version;
