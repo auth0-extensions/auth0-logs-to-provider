@@ -9,7 +9,7 @@ module.exports = () => {
   const batchMode = config('SEND_AS_BATCH') === true || config('SEND_AS_BATCH') === 'true';
   const concurrentCalls = parseInt(config('WEBHOOK_CONCURRENT_CALLS'), 10) || 5;
   const headers = config('AUTHORIZATION') ? { Authorization: config('AUTHORIZATION') } : {};
-  headers['User-Agent'] = 'auth0-extensions/0.2.7 auth webhook';
+  headers['User-Agent'] = 'auth0-extensions auth webhook';
 
   const sendRequest = (data, callback) =>
     Request({
