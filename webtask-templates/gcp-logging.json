@@ -1,0 +1,23 @@
+{
+  "title": "Logs to Google Cloud Logging",
+  "name": "logs-to-gcp-logging",
+  "version": "0.0.0",
+  "preVersion": "0.0.0",
+  "description": "This extension will take all of your Auth0 logs and export them to Google Cloud Logging",
+  "logoUrl": "data:image/svg+xml;base64,PHN2ZyBpZD0iUHJvZHVjdF9JY29ucyIgZGF0YS1uYW1lPSJQcm9kdWN0IEljb25zIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiM0Mjg1ZjQ7fS5jbHMtMntmaWxsOm5vbmU7fS5jbHMtM3tmaWxsOiM2NjlkZjY7fS5jbHMtNHtmaWxsOiNhZWNiZmE7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5JY29uXzI0cHhfQ29sb3JfTG9nZ2luZzwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSI2IiB5PSIxMSIgd2lkdGg9IjQiIGhlaWdodD0iMiIvPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iNCIgeT0iMTgiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiLz48ZyBpZD0iY29sb3JlZC0zMl9sb2dzIiBkYXRhLW5hbWU9ImNvbG9yZWQtMzIvbG9ncyI+PHJlY3QgaWQ9IkNvbnRhaW5lciIgY2xhc3M9ImNscy0yIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiLz48ZyBpZD0iU2hhcGUiPjxwb2x5Z29uIGlkPSJGaWxsLTMiIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI0IDE4IDYgMTggNiA2IDQgNiA0IDE4Ii8+PHBvbHlnb24gaWQ9IkZpbGwtNCIgY2xhc3M9ImNscy0zIiBwb2ludHM9IjkgNyAyMiA3IDIyIDMgOSAzIDkgNyIvPjxwb2x5Z29uIGlkPSJGaWxsLTQtMiIgZGF0YS1uYW1lPSJGaWxsLTQiIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSI5IDE0IDIyIDE0IDIyIDEwIDkgMTAgOSAxNCIvPjxwb2x5Z29uIGlkPSJGaWxsLTQtMyIgZGF0YS1uYW1lPSJGaWxsLTQiIGNsYXNzPSJjbHMtMyIgcG9pbnRzPSI5IDIxIDIyIDIxIDIyIDE3IDkgMTcgOSAyMSIvPjxwb2x5Z29uIGlkPSJGaWxsLTciIGNsYXNzPSJjbHMtNCIgcG9pbnRzPSIyIDggOCA4IDggMiAyIDIgMiA4Ii8+PC9nPjwvZz48L3N2Zz4=",
+  "secrets": {
+    "GCLOUD_CREDENTIALS": {
+      "description": "Google Cloud JSON service account key contents",
+      "required": true,
+      "type": "text",
+      "example": "{\n  \"type\": \"service_account\",\n  \"project_id\": \"my-project\",\n  \"private_key_id\": \"abcdefhijklmnopqrstuvwxyz0123456789\",\n  \"private_key\": \"-----BEGIN PRIVATE KEY-----\\nPRIVATE KEY CONTENTS\\n-----END PRIVATE KEY-----\\n\",\n  \"client_email\": \"my-service-account@my-project.iam.gserviceaccount.com\",\n  \"client_id\": \"1234578910112131411516\",\n  \"auth_uri\": \"https://accounts.google.com/o/oauth2/auth\",\n  \"token_uri\": \"https://oauth2.googleapis.com/token\",\n  \"auth_provider_x509_cert_url\": \"https://www.googleapis.com/oauth2/v1/certs\",\n  \"client_x509_cert_url\": \"https://www.googleapis.com/robot/v1/metadata/x509/my-service-account%40my-project.iam.gserviceaccount.com\"\n}"
+    },
+    "GCLOUD_LOG_NAME": {
+      "description": "Google Cloud Logging Log Name",
+      "default": "auth0"
+    },
+    "GCLOUD_PROJECT_ID": {
+      "description": "Project ID of GCP project if different from service account project"
+    }
+  }
+}
