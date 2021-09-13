@@ -455,6 +455,14 @@
           "value": "ublkdu"
         },
         {
+          "text": "Successful invite accept",
+          "value": "si"
+        },
+        {
+          "text": "Failed invite accept",
+          "value": "fi"
+        },
+        {
           "text": "Success Login",
           "value": "sens"
         },
