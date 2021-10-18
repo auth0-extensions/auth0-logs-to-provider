@@ -79,387 +79,387 @@
           "value": "-"
         },
         {
-          "text": "Success Login",
+          "text": "Success Login (s)",
           "value": "s"
         },
         {
-          "text": "Success Silent Auth",
+          "text": "Success Silent Auth (ssa)",
           "value": "ssa"
         },
         {
-          "text": "Failed Silent Auth",
+          "text": "Failed Silent Auth (fsa)",
           "value": "fsa"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (seacft)",
           "value": "seacft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (feacft)",
           "value": "feacft"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (seccft)",
           "value": "seccft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (feccft)",
           "value": "feccft"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (sepft)",
           "value": "sepft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (fepft)",
           "value": "fepft"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (sertft)",
           "value": "sertft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (fertft)",
           "value": "fertft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (ferrt)",
           "value": "ferrt"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (seoobft)",
           "value": "seoobft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (feoobft)",
           "value": "feoobft"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (seotpft)",
           "value": "seotpft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (feotpft)",
           "value": "feotpft"
         },
         {
-          "text": "Success Exchange",
+          "text": "Success Exchange (sercft)",
           "value": "sercft"
         },
         {
-          "text": "Failed Exchange",
+          "text": "Failed Exchange (fercft)",
           "value": "fercft"
         },
         {
-          "text": "Failed Login",
+          "text": "Failed Login (f)",
           "value": "f"
         },
         {
-          "text": "Warning",
+          "text": "Warning (w)",
           "value": "w"
         },
         {
-          "text": "Deprecation Notice",
+          "text": "Deprecation Notice (depnote)",
           "value": "depnote"
         },
         {
-          "text": "Deleted User",
+          "text": "Deleted User (du)",
           "value": "du"
         },
         {
-          "text": "Failed Login (invalid email/username)",
+          "text": "Failed Login (invalid email/username) (fu)",
           "value": "fu"
         },
         {
-          "text": "Failed Login (wrong password)",
+          "text": "Failed Login (wrong password) (fp)",
           "value": "fp"
         },
         {
-          "text": "Failed by Connector",
+          "text": "Failed by Connector (fc)",
           "value": "fc"
         },
         {
-          "text": "Failed by CORS",
+          "text": "Failed by CORS (fco)",
           "value": "fco"
         },
         {
-          "text": "Connector Online",
+          "text": "Connector Online (con)",
           "value": "con"
         },
         {
-          "text": "Connector Offline",
+          "text": "Connector Offline (coff)",
           "value": "coff"
         },
         {
-          "text": "Failed Connector Provisioning",
+          "text": "Failed Connector Provisioning (fcpro)",
           "value": "fcpro"
         },
         {
-          "text": "Success Signup",
+          "text": "Success Signup (ss)",
           "value": "ss"
         },
         {
-          "text": "Failed Signup",
+          "text": "Failed Signup (fs)",
           "value": "fs"
         },
         {
-          "text": "Code Sent",
+          "text": "Code Sent (cs)",
           "value": "cs"
         },
         {
-          "text": "Code/Link Sent",
+          "text": "Code/Link Sent (cls)",
           "value": "cls"
         },
         {
-          "text": "Success Verification Email",
+          "text": "Success Verification Email (sv)",
           "value": "sv"
         },
         {
-          "text": "Failed Verification Email",
+          "text": "Failed Verification Email (fv)",
           "value": "fv"
         },
         {
-          "text": "Success Change Password",
+          "text": "Success Change Password (scp)",
           "value": "scp"
         },
         {
-          "text": "Failed Change Password",
+          "text": "Failed Change Password (fcp)",
           "value": "fcp"
         },
         {
-          "text": "Success Post Change Password Hook",
+          "text": "Success Post Change Password Hook (scph)",
           "value": "scph"
         },
         {
-          "text": "Failed Post Change Password Hook",
+          "text": "Failed Post Change Password Hook (fcph)",
           "value": "fcph"
         },
         {
-          "text": "Success Change Email",
+          "text": "Success Change Email (sce)",
           "value": "sce"
         },
         {
-          "text": "Failed Change Email",
+          "text": "Failed Change Email (fce)",
           "value": "fce"
         },
         {
-          "text": "Success Change Username",
+          "text": "Success Change Username (scu)",
           "value": "scu"
         },
         {
-          "text": "Failed Change Username",
+          "text": "Failed Change Username (fcu)",
           "value": "fcu"
         },
         {
-          "text": "Success Change Phone Number",
+          "text": "Success Change Phone Number (scpn)",
           "value": "scpn"
         },
         {
-          "text": "Failed Change Phone Number",
+          "text": "Failed Change Phone Number (fcpn)",
           "value": "fcpn"
         },
         {
-          "text": "Success Verification Email Request",
+          "text": "Success Verification Email Request (svr)",
           "value": "svr"
         },
         {
-          "text": "Failed Verification Email Request",
+          "text": "Failed Verification Email Request (fvr)",
           "value": "fvr"
         },
         {
-          "text": "Success Change Password Request",
+          "text": "Success Change Password Request (scpr)",
           "value": "scpr"
         },
         {
-          "text": "Failed Change Password Request",
+          "text": "Failed Change Password Request (fcpr)",
           "value": "fcpr"
         },
         {
-          "text": "Failed Sending Notification",
+          "text": "Failed Sending Notification (fn)",
           "value": "fn"
         },
         {
-          "text": "API Operation",
+          "text": "API Operation (sapi)",
           "value": "sapi"
         },
         {
-          "text": "Failed API Operation",
+          "text": "Failed API Operation (fapi)",
           "value": "fapi"
         },
         {
-          "text": "Blocked Account",
+          "text": "Blocked Account (limit_wc)",
           "value": "limit_wc"
         },
         {
-          "text": "Blocked IP Address",
+          "text": "Blocked IP Address (limit_mu)",
           "value": "limit_mu"
         },
         {
-          "text": "Too Many Calls to /userinfo",
+          "text": "Too Many Calls to /userinfo (limit_ui)",
           "value": "limit_ui"
         },
         {
-          "text": "Rate Limit On API",
+          "text": "Rate Limit On API (api_limit)",
           "value": "api_limit"
         },
         {
-          "text": "Too Many Calls to /delegation",
+          "text": "Too Many Calls to /delegation (limit_delegation)",
           "value": "limit_delegation"
         },
         {
-          "text": "Successful User Deletion",
+          "text": "Successful User Deletion (sdu)",
           "value": "sdu"
         },
         {
-          "text": "Failed User Deletion",
+          "text": "Failed User Deletion (fdu)",
           "value": "fdu"
         },
         {
-          "text": "Auth0 Update Launched",
+          "text": "Auth0 Update Launched (admin_update_launch)",
           "value": "admin_update_launch"
         },
         {
-          "text": "Auth0 OS Update Started",
+          "text": "Auth0 OS Update Started (sys_os_update_start)",
           "value": "sys_os_update_start"
         },
         {
-          "text": "Auth0 OS Update Ended",
+          "text": "Auth0 OS Update Ended (sys_os_update_end)",
           "value": "sys_os_update_end"
         },
         {
-          "text": "Auth0 Update Started",
+          "text": "Auth0 Update Started (sys_update_start)",
           "value": "sys_update_start"
         },
         {
-          "text": "Auth0 Update Ended",
+          "text": "Auth0 Update Ended (sys_update_end)",
           "value": "sys_update_end"
         },
         {
-          "text": "Success Logout",
+          "text": "Success Logout (slo)",
           "value": "slo"
         },
         {
-          "text": "Failed Logout",
+          "text": "Failed Logout (flo)",
           "value": "flo"
         },
         {
-          "text": "Success Delegation",
+          "text": "Success Delegation (sd)",
           "value": "sd"
         },
         {
-          "text": "Failed Delegation",
+          "text": "Failed Delegation (fd)",
           "value": "fd"
         },
         {
-          "text": "Unenroll device account",
+          "text": "Unenroll device account (gd_unenroll)",
           "value": "gd_unenroll"
         },
         {
-          "text": "Update device account",
+          "text": "Update device account (gd_update_device_account)",
           "value": "gd_update_device_account"
         },
         {
-          "text": "Module switch",
+          "text": "Module switch (gd_module_switch)",
           "value": "gd_module_switch"
         },
         {
-          "text": "Guardian tenant update",
+          "text": "Guardian tenant update (gd_tenant_update)",
           "value": "gd_tenant_update"
         },
         {
-          "text": "Second factor started",
+          "text": "Second factor started (gd_start_auth)",
           "value": "gd_start_auth"
         },
         {
-          "text": "Enroll started",
+          "text": "Enroll started (gd_start_enroll)",
           "value": "gd_start_enroll"
         },
         {
-          "text": "MFA Enrollment start failed",
+          "text": "MFA Enrollment start failed (gd_start_enroll_failed)",
           "value": "gd_start_enroll_failed"
         },
         {
-          "text": "User delete",
+          "text": "User delete (gd_user_delete)",
           "value": "gd_user_delete"
         },
         {
-          "text": "OTP Auth suceed",
+          "text": "OTP Auth suceed (gd_auth_succeed)",
           "value": "gd_auth_succeed"
         },
         {
-          "text": "OTP Auth failed",
+          "text": "OTP Auth failed (gd_auth_failed)",
           "value": "gd_auth_failed"
         },
         {
-          "text": "Push notification sent",
+          "text": "Push notification sent (gd_send_pn)",
           "value": "gd_send_pn"
         },
         {
-          "text": "Error sending MFA Push Notification",
+          "text": "Error sending MFA Push Notification (gd_send_pn_failure)",
           "value": "gd_send_pn_failure"
         },
         {
-          "text": "OTP Auth rejected",
+          "text": "OTP Auth rejected (gd_auth_rejected)",
           "value": "gd_auth_rejected"
         },
         {
-          "text": "Recovery succeed",
+          "text": "Recovery succeed (gd_recovery_succeed)",
           "value": "gd_recovery_succeed"
         },
         {
-          "text": "Recovery failed",
+          "text": "Recovery failed (gd_recovery_failed)",
           "value": "gd_recovery_failed"
         },
         {
-          "text": "SMS Sent",
+          "text": "SMS Sent (gd_send_sms)",
           "value": "gd_send_sms"
         },
         {
-          "text": "Error sending MFA SMS",
+          "text": "Error sending MFA SMS (gd_send_sms_failure)",
           "value": "gd_send_sms_failure"
         },
         {
-          "text": "Too many failures",
+          "text": "Too many failures (gd_otp_rate_limit_exceed)",
           "value": "gd_otp_rate_limit_exceed"
         },
         {
-          "text": "Too many failures",
+          "text": "Too many failures (gd_recovery_rate_limit_exceed)",
           "value": "gd_recovery_rate_limit_exceed"
         },
         {
-          "text": "Guardian enrollment complete",
+          "text": "Guardian enrollment complete (gd_enrollment_complete)",
           "value": "gd_enrollment_complete"
         },
         {
-          "text": "Users import",
+          "text": "Users import (fui)",
           "value": "fui"
         },
         {
-          "text": "Users import",
+          "text": "Users import (sui)",
           "value": "sui"
         },
         {
-          "text": "Breached password",
+          "text": "Breached password (pwd_leak)",
           "value": "pwd_leak"
         },
         {
-          "text": "Failed cross origin authentication",
+          "text": "Failed cross origin authentication (fcoa)",
           "value": "fcoa"
         },
         {
-          "text": "Success cross origin authentication",
+          "text": "Success cross origin authentication (scoa)",
           "value": "scoa"
         },
         {
-          "text": "Account unblocked",
+          "text": "Account unblocked (ublkdu)",
           "value": "ublkdu"
         },
         {
-          "text": "Success Login",
+          "text": "Success Login (sens)",
           "value": "sens"
         },
         {
-          "text": "Failed Login",
+          "text": "Failed Login (fens)",
           "value": "fens"
         }
       ]
