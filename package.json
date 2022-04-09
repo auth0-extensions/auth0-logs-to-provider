@@ -110,7 +110,7 @@
     "logs-to-logentries": "^1.0.0",
     "lru-memoizer": "^1.6.0",
     "mixpanel": "^0.9.2",
-    "moment": "^2.13.0",
+    "moment": "^2.29.2",
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",
     "node-uuid": "1.4.3",
