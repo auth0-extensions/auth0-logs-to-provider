@@ -126,7 +126,7 @@
     "request": "^2.72.0",
     "request-promise": "^3.0.0",
     "semver": "^5.1.0",
-    "snyk": "^1.19.1",
+    "snyk": "^1.1024.0",
     "splunk-logging": "^0.9.1",
     "superagent": "1.2.0",
     "useragent": "2.1.6",
